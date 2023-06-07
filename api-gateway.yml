@@ -5,6 +5,8 @@ server:
     mime-types: application/json,text/css,application/javascript
     min-response-size: 2048
 
+logging.pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
 spring:
   cloud:
     loadbalancer:
