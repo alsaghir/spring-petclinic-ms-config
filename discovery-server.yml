@@ -1,0 +1,13 @@
+server:
+  port: 7772
+
+eureka:
+  instance:
+    hostname: localhost
+  renewalPercentThreshold: 0.33
+  # standalone mode
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

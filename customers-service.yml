@@ -1,0 +1,16 @@
+server:
+  port: 7773
+
+spring:
+  config:
+    activate:
+      on-profile: default
+  datasource:
+    url: jdbc:h2:tcp://${H2HOST:localhost}:${H2PORT:9092}/${H2PATH:petclinic-db};INIT=CREATE SCHEMA IF NOT EXISTS CUSTOMERS_SCHEMA\;SET SCHEMA CUSTOMERS_SCHEMA
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVER_HOST:localhost}:${DISCOVERY_SERVER_PORT:7772}/eureka/
+  instance:
+    # enable to register multiple app instances with a random server port
+    instance-id: ${spring.application.name}:${random.uuid}

@@ -1,0 +1,48 @@
+server:
+  port: 7778
+  compression:
+    enabled: true
+    mime-types: application/json,text/css,application/javascript
+    min-response-size: 2048
+
+spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false # https://cloud.spring.io/spring-cloud-gateway/reference/html/#the-loadbalancerclient-filter
+    gateway:
+      discovery:
+        locator.enabled: true
+      routes:
+        - id: vets-service
+          uri: lb://vets-service
+          predicates:
+            - Path=/api/vet/**
+          filters:
+            - StripPrefix=2
+        - id: visits-service
+          uri: lb://visits-service
+          predicates:
+            - Path=/api/visit/**
+          filters:
+            - StripPrefix=2
+        - id: customers-service
+          uri: lb://customers-service
+          predicates:
+            - Path=/api/customer/**
+          filters:
+            - StripPrefix=2
+        # - id: ui
+        #   uri: lb://ui
+        #   predicates:
+        #       - Path=/ui/**
+        #   filters:
+        #       - StripPrefix=1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVER_HOST:localhost}:${DISCOVERY_SERVER_PORT:7772}/eureka/
+  instance:
+    # enable to register multiple app instances with a random server port
+    instance-id: ${spring.application.name}:${random.uuid}

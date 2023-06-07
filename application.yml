@@ -1,0 +1,96 @@
+# COMMON APPLICATION PROPERTIES
+server:
+  # start services on random port by default
+  port: 0
+  # The stop processing uses a timeout which provides a grace period during which existing requests will be allowed to complete but no new requests will be permitted
+  shutdown: graceful
+
+# embedded database init, supports mysql too trough the 'mysql' spring profile
+spring:
+  cloud:
+    config:
+      # Allow the microservices to override the remote properties with their own System properties or config file
+      allow-override: true
+      # Override configuration with any local property source
+      override-none: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+# Spring Boot 1.5 makes actuator secure by default
+management.security.enabled: false
+# Enable all Actuators and not only the two available by default /health and /info starting Spring Boot 2.0
+management.endpoints.web.exposure.include: "*"
+
+# Logging
+logging:
+  file:
+    name: log/${spring.application.name}-logs.log
+  logback:
+    rollingpolicy:
+      max-file-size: 1MB
+      total-size-cap: 5MB
+      max-history: 5
+      clean-history-on-start: true
+  level:
+    root: INFO
+    org.springframework.orm.jpa: INFO
+    org.springframework.transaction: INFO
+    org.springframework.boot: INFO
+    org.springframework.web: INFO
+    org.hibernate.stat: INFO
+    org.hibernate.type: INFO
+
+# Metrics
+management:
+  endpoint:
+    health:
+      show-details: always
+      probes:
+      
+        enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  zipkin:
+    tracing.endpoint: ${ZIPKIN_URL:http://localhost:9411/api/v2/spans}
+  tracing:
+    sampling.probability: 1.0 # Sampling percentage of requests to prevent overwhelming the trace backend.
+    
+debug: false
+
+# to be referenced in logback-spring.xml
+app:
+  logging:
+    file:
+      name-json: log/${spring.application.name}-logs-json.log
+---
+spring:
+  config:
+    activate:
+      on-profile: h2
+  jpa:
+
+    # no generation for database schema
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+
+    # Spring Boot by default registers OpenEntityManagerInViewInterceptor
+    # to apply the “Open EntityManager in View” pattern, to allow for lazy loading in web views.
+    open-in-view: false
+    show-sql: true
+  datasource:
+
+    username: u
+    password: p
+    driver-class-name: org.h2.Driver
+
+  # never create schema of databases (every type)
+  sql:
+    init:
+      mode: never
