@@ -7,6 +7,8 @@ server:
 
 # embedded database init, supports mysql too trough the 'mysql' spring profile
 spring:
+  main:
+    lazy-initialization: true
   cloud:
     config:
       # Allow the microservices to override the remote properties with their own System properties or config file
@@ -35,6 +37,7 @@ logging:
       clean-history-on-start: true
   level:
     root: INFO
+    org.springframework.boot.autoconfigure: INFO
     org.springframework.orm.jpa: INFO
     org.springframework.transaction: INFO
     org.springframework.boot: INFO
@@ -61,7 +64,7 @@ management:
   tracing:
     sampling.probability: 1.0 # Sampling percentage of requests to prevent overwhelming the trace backend.
     
-debug: false
+debug: true
 
 # to be referenced in logback-spring.xml
 app:
