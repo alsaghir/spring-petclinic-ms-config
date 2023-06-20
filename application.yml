@@ -64,7 +64,7 @@ management:
   tracing:
     sampling.probability: 1.0 # Sampling percentage of requests to prevent overwhelming the trace backend.
     
-debug: true
+debug: false
 
 # to be referenced in logback-spring.xml
 app:
@@ -86,7 +86,7 @@ spring:
     # Spring Boot by default registers OpenEntityManagerInViewInterceptor
     # to apply the “Open EntityManager in View” pattern, to allow for lazy loading in web views.
     open-in-view: false
-    show-sql: true
+    show-sql: false
   datasource:
 
     username: u
