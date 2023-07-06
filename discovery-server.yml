@@ -4,6 +4,7 @@ server:
 eureka:
   instance:
     hostname: localhost
+    prefer-ip-address: true
   renewalPercentThreshold: 0.33
   # standalone mode
   client:

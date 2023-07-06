@@ -11,7 +11,7 @@ spring:
   cloud:
     loadbalancer:
       ribbon:
-        enabled: true # https://cloud.spring.io/spring-cloud-gateway/reference/html/#the-loadbalancerclient-filter
+        enabled: false # https://cloud.spring.io/spring-cloud-gateway/reference/html/#the-loadbalancerclient-filter
     gateway:
       discovery:
         locator.enabled: true
