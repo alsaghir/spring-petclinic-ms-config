@@ -51,9 +51,10 @@ management:
     health:
       show-details: always
       probes:
-      
         enabled: true
     prometheus:
+      enabled: true
+    gateway:
       enabled: true
   endpoints:
     web:
@@ -88,7 +89,6 @@ spring:
     open-in-view: false
     show-sql: false
   datasource:
-
     username: u
     password: p
     driver-class-name: org.h2.Driver
