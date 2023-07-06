@@ -65,7 +65,7 @@ management:
   tracing:
     sampling.probability: 1.0 # Sampling percentage of requests to prevent overwhelming the trace backend.
     
-debug: false
+debug: true
 
 # to be referenced in logback-spring.xml
 app:
