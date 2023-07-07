@@ -8,7 +8,7 @@ server:
 # embedded database init, supports mysql too trough the 'mysql' spring profile
 spring:
   main:
-    lazy-initialization: true
+    lazy-initialization: false
   cloud:
     config:
       # Allow the microservices to override the remote properties with their own System properties or config file
