@@ -64,7 +64,11 @@ management:
     tracing.endpoint: ${ZIPKIN_URL:http://localhost:9411/api/v2/spans}
   tracing:
     sampling.probability: 1.0 # Sampling percentage of requests to prevent overwhelming the trace backend.
-    
+
+eureka:
+  instance:
+    prefer-ip-address: true
+
 debug: true
 
 # to be referenced in logback-spring.xml
