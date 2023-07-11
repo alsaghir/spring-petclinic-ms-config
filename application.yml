@@ -65,10 +65,6 @@ management:
   tracing:
     sampling.probability: 1.0 # Sampling percentage of requests to prevent overwhelming the trace backend.
 
-eureka:
-  instance:
-    prefer-ip-address: true
-
 debug: true
 
 # to be referenced in logback-spring.xml
