@@ -16,8 +16,12 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
+            allowedOrigins:
+              - "http://api-gateway:7778"
+              - "http://localhost:7778"
+              - "http://host.docker.internal:7778"
             allowed-origin-patterns:
-              - ".*"
+              - .*
             allowedMethods:
               - GET
               - OPTIONS
