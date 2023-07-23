@@ -17,7 +17,7 @@ spring:
         cors-configurations:
           '[/**]':
             allowed-origin-patterns:
-              - "/**"
+              - ".*"
             allowedMethods:
               - GET
               - OPTIONS
