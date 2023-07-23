@@ -13,6 +13,22 @@ spring:
       ribbon:
         enabled: false # https://cloud.spring.io/spring-cloud-gateway/reference/html/#the-loadbalancerclient-filter
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns:
+              - "/**"
+            allowedMethods:
+              - GET
+              - OPTIONS
+              - PUT
+              - DELETE
+              - POST
+            allowed-headers:
+              - "access-control-allow-origin"
+              - "authorization"
+              - "content-type"
+        add-to-simple-url-handler-mapping: true
       discovery:
         locator.enabled: true
         lower-case-service-id: true
