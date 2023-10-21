@@ -74,6 +74,9 @@ app:
       name-json: log/${spring.application.name}-logs-json.log
 ---
 spring:
+  h2:
+    console:
+      enabled: true
   config:
     activate:
       on-profile: h2

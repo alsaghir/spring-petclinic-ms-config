@@ -12,3 +12,22 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  cloud:
+  inetutils:
+    ignored-interfaces:
+      - lo0
+      - gif0
+      - stf0
+      - en5
+      - ap1
+      - en4
+      - en3
+      - en2
+      - en1
+      - awdl0
+      - llw0
+      - bridge0
+      - utun0
+      - utun1
+      - utun2
