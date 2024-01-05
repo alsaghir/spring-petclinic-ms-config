@@ -4,7 +4,9 @@ server:
 eureka:
   instance:
     hostname: localhost
+    # https://cloud.spring.io/spring-cloud-netflix/reference/html/#spring-cloud-eureka-server-prefer-ip-address
     prefer-ip-address: false
+    preferIpAddress: false
   renewalPercentThreshold: 0.33
   # standalone mode
   client:
